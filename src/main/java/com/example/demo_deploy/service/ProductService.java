@@ -1,10 +1,13 @@
 package com.example.demo_deploy.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.example.demo_deploy.model.Product;
 import com.example.demo_deploy.repository.ProductRepository;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

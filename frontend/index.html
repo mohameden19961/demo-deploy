@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products Manager</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+<div class="container">
+  <h1>🛍️ Products Manager</h1>
+
+  <!-- Formulaire ajout -->
+  <div class="card">
+    <h2>Ajouter un produit</h2>
+    <div class="form-row">
+      <input type="text" id="name" placeholder="Nom du produit" />
+      <input type="number" id="price" placeholder="Prix (ex: 49.99)" step="0.01" />
+      <button class="btn-add" onclick="createProduct()">+ Ajouter</button>
+    </div>
+  </div>
+
+  <!-- Liste des produits -->
+  <div class="card">
+    <h2>Liste des produits</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prix</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="productList">
+        <tr><td colspan="4" class="empty">Chargement...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js">
+  
+</script>
+
+</body>
+</html>
