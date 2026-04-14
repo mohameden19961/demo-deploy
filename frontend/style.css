@@ -131,3 +131,49 @@
       padding: 30px;
       font-style: italic;
     }
+
+@media (max-width: 600px) {
+  body { padding: 16px 10px; }
+
+  h1 { font-size: 1.4rem; }
+
+  .card { padding: 14px; }
+
+  .form-row { flex-direction: column; }
+
+  input { min-width: unset; width: 100%; }
+
+  /* Cacher les colonnes thead et afficher en cards */
+  thead { display: none; }
+
+  table, tbody, tr, td { display: block; width: 100%; }
+
+  tr {
+    background: #0f172a;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    padding: 12px;
+    border: 1px solid #334155;
+  }
+
+  td {
+    padding: 4px 0;
+    font-size: 0.9rem;
+    border: none;
+  }
+
+  td::before {
+    content: attr(data-label);
+    color: #38bdf8;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .actions { flex-direction: row; gap: 8px; margin-top: 8px; }
+
+  .btn-edit, .btn-delete { flex: 1; text-align: center; }
+
+  .toast { right: 12px; left: 12px; text-align: center; }
+}
