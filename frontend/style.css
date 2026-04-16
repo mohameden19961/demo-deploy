@@ -1,187 +1,268 @@
-/* Reset simple */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+/* ─── Reset ─── */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Syne', sans-serif;
 }
 
-/* Body */
+/* ─── Base ─── */
 body {
-  background: #f5f7fb;
-  color: #333;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #f4f4f8;
+  color: #1a1a2e;
+  min-height: 100vh;
 }
 
-/* Header */
+/* ─── Header ─── */
 header {
-  background: #2d6cdf;
-  color: white;
-  padding: 20px;
-  text-align: center;
+  background: #1a1a2e;
+  padding: 28px 32px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 header h1 {
-  font-size: 28px;
-  margin-bottom: 5px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 3px;
+  letter-spacing: -0.3px;
 }
 
 header span {
-  font-size: 14px;
-  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
 }
 
-/* Layout */
+/* ─── Layout ─── */
 .layout {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  min-height: calc(100vh - 85px);
 }
 
-/* Panels */
-.form-panel,
+/* ─── Panels ─── */
+.form-panel {
+  background: #fff;
+  border-right: 0.5px solid rgba(0, 0, 0, 0.08);
+  padding: 28px 24px;
+}
+
 .table-panel {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  flex: 1;
-  min-width: 300px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  background: #fff;
+  padding: 28px 24px;
 }
 
+/* ─── Section titles ─── */
 h2 {
-  margin-bottom: 15px;
-  font-size: 18px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 20px;
 }
 
-/* Form fields */
+/* ─── Form fields ─── */
 .field {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
 }
 
 label {
-  margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 500;
   color: #555;
+  margin-bottom: 6px;
 }
 
 input {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  padding: 9px 12px;
+  background: #f8f8fb;
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
   font-size: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #1a1a2e;
   outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 input:focus {
-  border-color: #2d6cdf;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
 }
 
-/* Button */
+input::placeholder {
+  color: #aaa;
+}
+
+/* ─── Add button ─── */
 .btn-add {
   width: 100%;
-  padding: 10px;
-  background: #2d6cdf;
-  color: white;
+  padding: 10px 16px;
+  margin-top: 4px;
+  background: #1a1a2e;
+  color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   cursor: pointer;
-  font-size: 15px;
-  transition: 0.3s;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.1px;
 }
 
 .btn-add:hover {
-  background: #1f56c4;
+  background: #2d2d4e;
 }
 
-/* Table */
+.btn-add:active {
+  transform: scale(0.98);
+}
+
+/* ─── Table ─── */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
 }
 
-th, td {
-  padding: 12px;
+thead th {
+  font-size: 11px;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  padding: 0 12px 10px;
   text-align: left;
-  border-bottom: 1px solid #eee;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
 }
 
-th {
-  background: #f0f4ff;
-  font-size: 14px;
+thead th:last-child {
+  text-align: right;
+}
+
+tbody tr {
+  transition: background 0.1s;
+}
+
+tbody tr:hover {
+  background: #f8f8fb;
 }
 
 td {
+  padding: 12px;
   font-size: 14px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.06);
+  color: #1a1a2e;
+  vertical-align: middle;
 }
 
-/* Empty state */
-.empty-state {
-  text-align: center;
-  color: #888;
-  padding: 20px;
+td:last-child {
+  text-align: right;
 }
 
-/* Conteneur des boutons */
+/* ─── Price ─── */
+.price {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ─── Action buttons ─── */
 .actions {
   display: flex;
-  gap: 8px;
+  gap: 6px;
+  justify-content: flex-end;
 }
 
-/* Style global des boutons actions */
 .actions button {
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: 0.25s;
+  font-size: 11px;
+  font-weight: 500;
   font-family: 'DM Mono', monospace;
+  padding: 5px 11px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.2px;
 }
 
-/* Bouton Modifier */
-.actions button:first-child {
-  background: #ffb020;
-  color: white;
+.actions button:active {
+  transform: scale(0.97);
 }
 
-.actions button:first-child:hover {
-  background: #e69a00;
-  transform: scale(1.05);
+/* Modifier */
+.btn-edit {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
 }
 
-/* Bouton Supprimer */
-.actions button:last-child {
-  background: #e74c3c;
-  color: white;
+.btn-edit:hover {
+  background: rgba(99, 102, 241, 0.18);
 }
 
-.actions button:last-child:hover {
-  background: #c0392b;
-  transform: scale(1.05);
+/* Supprimer */
+.btn-delete {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
 }
 
-/* Bouton Sauver (quand edit) */
-.actions button:nth-child(1):only-child {
-  background: #2ecc71;
-  color: white;
+.btn-delete:hover {
+  background: rgba(239, 68, 68, 0.18);
 }
 
-.actions button:nth-child(1):only-child:hover {
-  background: #27ae60;
-  transform: scale(1.05);
+/* Sauver */
+.btn-save {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
 }
 
-/* Bouton Annuler */
-.actions button:nth-child(2):only-child {
-  background: #7f8c8d;
-  color: white;
+.btn-save:hover {
+  background: rgba(34, 197, 94, 0.2);
 }
 
-.actions button:nth-child(2):only-child:hover {
-  background: #636e72;
-  transform: scale(1.05);
+/* Annuler */
+.btn-cancel {
+  background: #f0f0f4;
+  color: #666;
+}
+
+.btn-cancel:hover {
+  background: #e8e8f0;
+}
+
+/* ─── Edit inputs ─── */
+.edit-input {
+  background: #f8f8fb;
+  border: 0.5px solid #6366f1;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 13px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #1a1a2e;
+  outline: none;
+}
+
+/* ─── Empty state ─── */
+.empty-state {
+  text-align: center;
+  padding: 40px 0;
+  color: #aaa;
+  font-size: 13px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 720px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .form-panel {
+    border-right: none;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
+  }
 }

@@ -1,5 +1,4 @@
-  // const API = "https://demo-deploy-iu7p.onrender.com/api/products";
-  const API = "http://localhost:8080/api/products";
+  const API = "https://demo-deploy-iu7p.onrender.com/api/products";
     async function getProducts() {
       const response = await fetch(API);
       const products = await response.json();
@@ -45,7 +44,6 @@
     function startEdit(id, name, price) {
       const row = document.getElementById("row-" + id);
       row.innerHTML = `
-        <td>${id}</td>
         <td><input id="name-${id}" value="${name}"></td>
         <td><input id="price-${id}" value="${price}"></td>
         <td>
