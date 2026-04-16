@@ -16,6 +16,7 @@
 
   <div class="layout">
 
+    <!-- ─── Formulaire gauche ─── -->
     <div class="form-panel">
       <h2>Nouveau produit</h2>
       <div class="field">
@@ -26,9 +27,14 @@
         <label for="price">Prix (€)</label>
         <input type="number" id="price" placeholder="ex: 49.90" />
       </div>
+      <div class="field">
+        <label for="description">Description</label>
+        <input type="text" id="description" placeholder="ex: Produit de qualité..." />
+      </div>
       <button class="btn-add" onclick="addProduct()">+ Ajouter</button>
     </div>
 
+    <!-- ─── Table + Detail droite ─── -->
     <div class="table-panel">
       <h2>Liste des produits</h2>
       <table>
@@ -43,12 +49,17 @@
           <tr><td colspan="3" class="empty-state">Chargement…</td></tr>
         </tbody>
       </table>
+
+      <!-- ─── Detail panel sous le tableau ─── -->
+      <div id="detail-panel" style="display:none">
+        <div id="detail-content"></div>
+        <button class="btn-close" onclick="closeDetail()">✕ Fermer</button>
+      </div>
+
     </div>
 
   </div>
 
   <script src="script.js"></script>
-  
-
 </body>
 </html>

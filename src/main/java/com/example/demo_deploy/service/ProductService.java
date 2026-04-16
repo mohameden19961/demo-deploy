@@ -21,6 +21,7 @@ public class ProductService {
         Product existing = getById(id);
         existing.setName(p.getName());
         existing.setPrice(p.getPrice());
+        existing.setDescription(p.getDescription());
         return repo.save(existing);
     }
     public void delete(Long id) { repo.deleteById(id); }
