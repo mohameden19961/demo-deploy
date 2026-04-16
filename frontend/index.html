@@ -3,49 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Products Manager</title>
-  <link rel="stylesheet" href="style.css">
-  
+  <title>Gestion des Produits</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="container">
-  <h1>🛍️ Products Manager</h1>
+  <header>
+    <h1>Produits</h1>
+    <span>Gestion du catalogue</span>
+  </header>
 
-  <!-- Formulaire ajout -->
-  <div class="card">
-    <h2>Ajouter un produit</h2>
-    <div class="form-row">
-      <input type="text" id="name" placeholder="Nom du produit" />
-      <input type="number" id="price" placeholder="Prix (ex: 49.99)" step="0.01" />
-      <button class="btn-add" onclick="createProduct()">+ Ajouter</button>
+  <div class="layout">
+
+    <div class="form-panel">
+      <h2>Nouveau produit</h2>
+      <div class="field">
+        <label for="name">Nom</label>
+        <input type="text" id="name" placeholder="ex: Chaise Oslo" />
+      </div>
+      <div class="field">
+        <label for="price">Prix (€)</label>
+        <input type="number" id="price" placeholder="ex: 49.90" />
+      </div>
+      <button class="btn-add" onclick="addProduct()">+ Ajouter</button>
     </div>
+
+    <div class="table-panel">
+      <h2>Liste des produits</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="productList">
+          <tr><td colspan="4" class="empty-state">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 
-  <!-- Liste des produits -->
-  <div class="card">
-    <h2>Liste des produits</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nom</th>
-          <th>Prix</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="productList">
-        <tr><td colspan="4" class="empty">Chargement...</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<script src="script.js">
+  <script src="script.js"></script>
   
-</script>
 
 </body>
 </html>
