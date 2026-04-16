@@ -1,5 +1,5 @@
-  const API = "https://demo-deploy-iu7p.onrender.com/api/products";
-
+  // const API = "https://demo-deploy-iu7p.onrender.com/api/products";
+  const API = "http://localhost:8080/api/products";
     async function getProducts() {
       const response = await fetch(API);
       const products = await response.json();
@@ -9,7 +9,6 @@
         const p = products[i];
         table.innerHTML += `
           <tr id="row-${p.id}">
-            <td>${p.id}</td>
             <td>${p.name}</td>
             <td>${p.price} €</td>
             <td>
