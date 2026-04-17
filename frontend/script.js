@@ -14,8 +14,8 @@ async function getProducts() {
         <td class="price">${p.price} €</td>
         <td>
           <div class="actions">
-            <button class="btn-view"   onclick="showDetail('${p.name}', ${p.price}, \`${p.description || ''}\`)">Voir</button>
-            <button class="btn-edit"   onclick="startEdit(${p.id}, '${p.name}', ${p.price})">Modifier</button>
+            <button class="btn-view"   onclick="showDetail(${p.id})">Voir</button>
+            <button class="btn-edit"   onclick="startEdit(${p.id}, '${p.name}', ${p.price}, \`${p.description || ''}\`)">Modifier</button>
             <button class="btn-delete" onclick="removeProduct(${p.id})">Supprimer</button>
           </div>
         </td>
@@ -28,7 +28,7 @@ async function addProduct() {
   const name        = document.getElementById("name").value;
   const price       = document.getElementById("price").value;
   const description = document.getElementById("description").value;
-  if (name === "" || price === "") { alert("Remplir les champs"); return; }
+  if (name === "" || price === "" || description === "") { alert("Remplir les champs"); return; }
   await fetch(API, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -46,7 +46,7 @@ async function removeProduct(id) {
   getProducts();
 }
 
-function startEdit(id, name, price) {
+function startEdit(id, name, price, description) {
   const row = document.getElementById("row-" + id);
   row.innerHTML = `
     <td><input class="edit-input" id="name-${id}"  value="${name}"></td>
@@ -58,26 +58,45 @@ function startEdit(id, name, price) {
       </div>
     </td>
   `;
+  // Ligne description sous la ligne d'édition
+  const descRow = document.createElement("tr");
+  descRow.id = "desc-row-" + id;
+  descRow.innerHTML = `
+    <td colspan="3" style="padding: 4px 12px 12px;">
+      <input 
+        class="edit-input" 
+        id="desc-${id}" 
+        value="${description || ''}" 
+        placeholder="Description du produit..."
+        style="width: 100%;"
+      >
+    </td>
+  `;
+  row.insertAdjacentElement("afterend", descRow);
 }
 
 async function saveEdit(id) {
-  const name  = document.getElementById("name-"  + id).value;
-  const price = document.getElementById("price-" + id).value;
+  const name        = document.getElementById("name-"  + id).value;
+  const price       = document.getElementById("price-" + id).value;
+  const description = document.getElementById("desc-"  + id).value;
   await fetch(API + "/" + id, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, price: Number(price) })
+    body: JSON.stringify({ name, price: Number(price), description })
   });
   getProducts();
 }
 
-function showDetail(name, price, description) {
+// showDetail fait un GET /api/products/{id} pour avoir les données fraîches
+async function showDetail(id) {
+  const response = await fetch(API + "/" + id);
+  const p = await response.json();
   const panel   = document.getElementById("detail-panel");
   const content = document.getElementById("detail-content");
   content.innerHTML = `
-    <h3>${name}</h3>
-    <div class="detail-price">${price} €</div>
-    <div class="detail-desc">${description || '<em>Aucune description disponible.</em>'}</div>
+    <h3>${p.name}</h3>
+    <div class="detail-price">${p.price} €</div>
+    <div class="detail-desc">${p.description || '<em>Aucune description disponible.</em>'}</div>
   `;
   panel.style.display = "block";
   panel.scrollIntoView({ behavior: "smooth", block: "start" });
